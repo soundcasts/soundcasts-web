@@ -47,27 +47,38 @@
     var eventName = 'keyup';
     id('title').addEventListener(eventName, inputsChanged);
     id('userId').addEventListener(eventName, inputsChanged);
+    id('userId').addEventListener(eventName, detectSoundcloudUrlPaste);
     id('regexString').addEventListener(eventName, inputsChanged);
-
-    function title() { return id('title').value; }
-    function userId() { return id('userId').value; }
-    function regexString() { return id('regexString').value; }
-    function regexStringUserId() { return id('regexStringUserId').value; }
 
     function inputsChanged() {
       var url = '';
-      if (title().length && userId().length) {
+      if (value('title').length && value('userId').length) {
         url = 'http://api.soundcasts.net/soundcast.xml';
-        url += '?title=' + encodeURIComponent(title());
-        url += '&userId=' + encodeURIComponent(userId());
-        url += '&regexString=' + encodeURIComponent(regexString());
+        url += '?title=' + encodeURIComponent(value('title'));
+        url += '&userId=' + encodeURIComponent(value('userId'));
+        url += '&regexString=' + encodeURIComponent(value('regexString'));
       }
-      id('url').value = url;
-      id('regexStringUserId').innerHTML = userId() || 'user_id';
+      value('url', url);
+      id('regexStringUserId').innerHTML = value('userId') || 'user_id';
+    }
+
+    function detectSoundcloudUrlPaste(e) {
+      var userId = value('userId');
+      var match = /soundcloud\.com\/([^\/.]+)/.exec(userId);
+      if (match) {
+        e.stopPropagation();
+        value('userId',  match[1]);
+        inputsChanged();
+      }
     }
 
     function id(id) {
       return document.getElementById(id);
+    }
+
+    function value(elementId, value) {
+      if (value && value.length) return id(elementId).value = value;
+      return id(elementId).value;
     }
   </script>
 
