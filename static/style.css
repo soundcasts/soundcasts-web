@@ -50,7 +50,6 @@ body {
 .input span {
   margin-top: 5px;
   opacity: 0;
-  transition: opacity 150ms;
 }
 
 input:focus + span {
@@ -73,8 +72,6 @@ input {
   color: #3a3a3a;
   letter-spacing: 1px;
   border-radius: 5px 5px 5px 5px;
-
-  transition: outline 150ms, box-shadow 150ms;
 }
 
 input:focus {
