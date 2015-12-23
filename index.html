@@ -11,7 +11,9 @@
 
 
   <body>
-    <div class="container">
+    <div id="root"></div>
+
+    <div class="container" style="display: none">
       <div class="header">
         <h1 class="title">Soundcasts</h1>
         <div>
@@ -49,7 +51,7 @@
   </body>
 
 
-  <script>
+  <script type="text">
     var keyEventName = 'keyup';
     var clickEventName = 'click';
     id('title').addEventListener(keyEventName, inputsChanged);
@@ -103,6 +105,9 @@
       return id(elementId).value;
     }
   </script>
+
+
+  <script src="/build/app.js"></script>
 
 
   <script>
