@@ -5,35 +5,95 @@ import { connect } from 'react-redux';
 
 import * as ValuesActions from '../actions/values';
 
+import Header from '../components/Header';
+import InputGroup from '../components/InputGroup';
+import Input from '../components/Input';
 import Footer from '../components/Footer';
 
 
 class App extends React.Component {
 
+  static propTypes = {
+    values: React.PropTypes.object.isRequired,
+    actions: React.PropTypes.object.isRequired
+  };
+
   render() {
     const { values, actions } = this.props;
-    let str = JSON.stringify(values);
-    console.log({ values, actions });
+
+
+    let titleInputProps = {
+      value: values.title,
+      onChange: actions.editField.bind(null, 'title'),
+      type: 'text',
+      placeholder: 'Soundcast Title'
+    };
+    let titleInputGroup = r(InputGroup, null,
+      r(Input, titleInputProps),
+      r('span', null, 'The title that will display in your podcast player.')
+    );
+
+
+    let userIdInputProps = {
+      value: values.userId,
+      onChange: actions.editField.bind(null, 'userId'),
+      type: 'text',
+      placeholder: 'SoundCloud user_id',
+      autoCorrect: 'off',
+      autoCapitalize: 'none'
+    };
+    let userIdInputGroup = r(InputGroup, null,
+      r(Input, userIdInputProps),
+      r('span', null, 'https://soundcloud.com/'),
+      r('span', { className: 'red' }, values.userId || 'user_id')
+    );
+
+
+    let regexStringInputProps = {
+      value: values.regexString,
+        onChange: actions.editField.bind(null, 'regexString'),
+        type: 'text',
+        placeholder: 'SoundCloud Regex Filter (Optional)',
+        autoCorrect: 'off',
+        autoCapitalize: 'none'
+    };
+    let regexStringInputGroup = r(InputGroup, null,
+      r(Input, regexStringInputProps),
+      r('span', null, 'JavaScript case-insensitive regex filter applied against '),
+      r('span', { className: 'red' }, values.userId || 'user_id'),
+      r('span', null, '\'s track titles.')
+    );
+
+
+    let urlInputProps = {
+      value: values.url,
+      onChange: actions.editField.bind(null, 'url'),
+      id: 'url',
+      type: 'text',
+      placeholder: 'Soundcast URL',
+      required: 'required'
+    };
+    let urlInputGroupDescription = 'Copy and paste this link into your podcast player.';
+    let urlInputGroupDescriptionOpacity = values.url ? 1 : 0;
+    let urlInputGroup = r(InputGroup, null,
+      r(Input, urlInputProps),
+      r('span', { style: { opacity: urlInputGroupDescriptionOpacity } }, urlInputGroupDescription)
+    );
+
+
     return (
       r('div', null,
-        r('p', null, str),
-        r('button', { onClick: this.handleEdit.bind(this) }, 'Title'),
+        r(Header),
+        titleInputGroup,
+        userIdInputGroup,
+        regexStringInputGroup,
+        urlInputGroup,
         r(Footer)
       )
     );
   }
 
-  handleEdit() {
-    console.log(this);
-    console.log(arguments);
-    this.props.actions.editField('name', 'IANNN');
-  }
-
 }
-
-App.propTypes = {
-  values: React.PropTypes.object.isRequired
-};
 
 
 function mapStateToProps(state) {

@@ -1,11 +1,10 @@
-export const RESET = 'RESET';
-export const EDIT_FIELD = 'EDIT_FIELD';
+import * as ACTIONS from './constants';
 
 
 export function reset() {
-  return { type: RESET };
+  return { type: ACTIONS.RESET };
 }
 
 export function editField(field, value) {
-  return { type: EDIT_FIELD, field, value };
+  return { type: ACTIONS.EDIT_FIELD, field, value };
 }

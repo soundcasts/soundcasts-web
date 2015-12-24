@@ -1,5 +1,5 @@
-import * as ACTIONS from '../actions/values';
-import { clone } from '../util';
+import * as ACTIONS from '../actions/constants';
+import { clone, buildUrl } from '../util';
 
 
 const initialState = {
@@ -23,16 +23,4 @@ export default function values(state = initialState, action) {
     default:
       return state;
   }
-}
-
-
-function buildUrl(state) {
-  var url = '';
-  if (state.title.length && state.userId.length) {
-    url = 'http://api.soundcasts.net/soundcast.xml';
-    url += '?title=' + encodeURIComponent(state.title);
-    url += '&userId=' + encodeURIComponent(state.userId);
-    url += '&regexString=' + encodeURIComponent(state.regexString);
-  }
-  return url;
 }

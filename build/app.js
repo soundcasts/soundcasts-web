@@ -20197,20 +20197,33 @@ module.exports = exports["default"];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.reset = reset;
-exports.editField = editField;
 var RESET = exports.RESET = 'RESET';
 var EDIT_FIELD = exports.EDIT_FIELD = 'EDIT_FIELD';
 
+},{}],178:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.reset = reset;
+exports.editField = editField;
+
+var _constants = require('./constants');
+
+var ACTIONS = _interopRequireWildcard(_constants);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function reset() {
-  return { type: RESET };
+  return { type: ACTIONS.RESET };
 }
 
 function editField(field, value) {
-  return { type: EDIT_FIELD, field: field, value: value };
+  return { type: ACTIONS.EDIT_FIELD, field: field, value: value };
 }
 
-},{}],178:[function(require,module,exports){
+},{"./constants":177}],179:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -20259,7 +20272,156 @@ var Footer = (function (_React$Component) {
 
 exports.default = Footer;
 
-},{"react":167}],179:[function(require,module,exports){
+},{"react":167}],180:[function(require,module,exports){
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = (function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Header).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+      var title = (0, _react.createElement)('p', { className: 'title' }, 'Soundcasts');
+      var subtitle = (0, _react.createElement)('p', { className: 'subtitle' }, 'Turn SoundCloud profiles into podcasts.');
+
+      return (0, _react.createElement)('div', { className: 'header' }, title, subtitle);
+    }
+  }]);
+
+  return Header;
+})(_react2.default.Component);
+
+exports.default = Header;
+
+},{"react":167}],181:[function(require,module,exports){
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _util = require('../util');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Input = (function (_React$Component) {
+  _inherits(Input, _React$Component);
+
+  function Input() {
+    _classCallCheck(this, Input);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(Input).apply(this, arguments));
+  }
+
+  _createClass(Input, [{
+    key: 'handleChange',
+    value: function handleChange(e) {
+      this.props.onChange(e.target.value);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var props = (0, _util.clone)(this.props, { onChange: this.handleChange.bind(this) });
+      return (0, _react.createElement)('input', props);
+    }
+  }]);
+
+  return Input;
+})(_react2.default.Component);
+
+Input.propTypes = {
+  value: _react2.default.PropTypes.string.isRequired,
+  onChange: _react2.default.PropTypes.func.isRequired
+};
+exports.default = Input;
+
+},{"../util":188,"react":167}],182:[function(require,module,exports){
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var InputGroup = (function (_React$Component) {
+  _inherits(InputGroup, _React$Component);
+
+  function InputGroup() {
+    _classCallCheck(this, InputGroup);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputGroup).apply(this, arguments));
+  }
+
+  _createClass(InputGroup, [{
+    key: 'render',
+    value: function render() {
+      return (0, _react.createElement)('div', { className: 'input-group' }, this.props.children);
+    }
+  }]);
+
+  return InputGroup;
+})(_react2.default.Component);
+
+exports.default = InputGroup;
+
+},{"react":167}],183:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var API_URL = exports.API_URL = 'http://api.soundcasts.net/soundcast.xml';
+
+},{}],184:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -20279,6 +20441,18 @@ var _reactRedux = require('react-redux');
 var _values = require('../actions/values');
 
 var ValuesActions = _interopRequireWildcard(_values);
+
+var _Header = require('../components/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _InputGroup = require('../components/InputGroup');
+
+var _InputGroup2 = _interopRequireDefault(_InputGroup);
+
+var _Input = require('../components/Input');
+
+var _Input2 = _interopRequireDefault(_Input);
 
 var _Footer = require('../components/Footer');
 
@@ -20310,16 +20484,47 @@ var App = (function (_React$Component) {
       var values = _props.values;
       var actions = _props.actions;
 
-      var str = JSON.stringify(values);
-      console.log({ values: values, actions: actions });
-      return (0, _react.createElement)('div', null, (0, _react.createElement)('p', null, str), (0, _react.createElement)('button', { onClick: this.handleEdit.bind(this) }, 'Title'), (0, _react.createElement)(_Footer2.default));
-    }
-  }, {
-    key: 'handleEdit',
-    value: function handleEdit() {
-      console.log(this);
-      console.log(arguments);
-      this.props.actions.editField('name', 'IANNN');
+      var titleInputProps = {
+        value: values.title,
+        onChange: actions.editField.bind(null, 'title'),
+        type: 'text',
+        placeholder: 'Soundcast Title'
+      };
+      var titleInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, titleInputProps), (0, _react.createElement)('span', null, 'The title that will display in your podcast player.'));
+
+      var userIdInputProps = {
+        value: values.userId,
+        onChange: actions.editField.bind(null, 'userId'),
+        type: 'text',
+        placeholder: 'SoundCloud user_id',
+        autoCorrect: 'off',
+        autoCapitalize: 'none'
+      };
+      var userIdInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, userIdInputProps), (0, _react.createElement)('span', null, 'https://soundcloud.com/'), (0, _react.createElement)('span', { className: 'red' }, values.userId || 'user_id'));
+
+      var regexStringInputProps = {
+        value: values.regexString,
+        onChange: actions.editField.bind(null, 'regexString'),
+        type: 'text',
+        placeholder: 'SoundCloud Regex Filter (Optional)',
+        autoCorrect: 'off',
+        autoCapitalize: 'none'
+      };
+      var regexStringInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, regexStringInputProps), (0, _react.createElement)('span', null, 'JavaScript case-insensitive regex filter applied against '), (0, _react.createElement)('span', { className: 'red' }, values.userId || 'user_id'), (0, _react.createElement)('span', null, '\'s track titles.'));
+
+      var urlInputProps = {
+        value: values.url,
+        onChange: actions.editField.bind(null, 'url'),
+        id: 'url',
+        type: 'text',
+        placeholder: 'Soundcast URL',
+        required: 'required'
+      };
+      var urlInputGroupDescription = 'Copy and paste this link into your podcast player.';
+      var urlInputGroupDescriptionOpacity = values.url ? 1 : 0;
+      var urlInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, urlInputProps), (0, _react.createElement)('span', { style: { opacity: urlInputGroupDescriptionOpacity } }, urlInputGroupDescription));
+
+      return (0, _react.createElement)('div', null, (0, _react.createElement)(_Header2.default), titleInputGroup, userIdInputGroup, regexStringInputGroup, urlInputGroup, (0, _react.createElement)(_Footer2.default));
     }
   }]);
 
@@ -20327,7 +20532,8 @@ var App = (function (_React$Component) {
 })(_react2.default.Component);
 
 App.propTypes = {
-  values: _react2.default.PropTypes.object.isRequired
+  values: _react2.default.PropTypes.object.isRequired,
+  actions: _react2.default.PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -20344,7 +20550,7 @@ function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions/values":177,"../components/Footer":178,"react":167,"react-redux":6,"redux":169}],180:[function(require,module,exports){
+},{"../actions/values":178,"../components/Footer":179,"../components/Header":180,"../components/Input":181,"../components/InputGroup":182,"react":167,"react-redux":6,"redux":169}],185:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -20365,15 +20571,13 @@ var _reducers = require('./reducers');
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _util = require('./util');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var store = (0, _redux.createStore)(_reducers2.default);
 
-(0, _reactDom.render)((0, _util.r)(_reactRedux.Provider, { store: store }, (0, _util.r)(_App2.default)), document.getElementById('root'));
+(0, _reactDom.render)((0, _react.createElement)(_reactRedux.Provider, { store: store }, (0, _react.createElement)(_App2.default)), document.getElementById('root'));
 
-},{"./containers/App":179,"./reducers":181,"./util":183,"react":167,"react-dom":3,"react-redux":6,"redux":169}],181:[function(require,module,exports){
+},{"./containers/App":184,"./reducers":186,"react":167,"react-dom":3,"react-redux":6,"redux":169}],186:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20394,7 +20598,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"./values":182,"redux":169}],182:[function(require,module,exports){
+},{"./values":187,"redux":169}],187:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20402,9 +20606,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = values;
 
-var _values = require('../actions/values');
+var _constants = require('../actions/constants');
 
-var ACTIONS = _interopRequireWildcard(_values);
+var ACTIONS = _interopRequireWildcard(_constants);
 
 var _util = require('../util');
 
@@ -20429,7 +20633,7 @@ function values() {
 
     case ACTIONS.EDIT_FIELD:
       state = (0, _util.clone)(state, _defineProperty({}, action.field, action.value));
-      var url = buildUrl(state);
+      var url = (0, _util.buildUrl)(state);
       return (0, _util.clone)(state, { url: url });
 
     default:
@@ -20437,10 +20641,31 @@ function values() {
   }
 }
 
+},{"../actions/constants":177,"../util":188}],188:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.clone = clone;
+exports.buildUrl = buildUrl;
+
+var _constants = require('./constants');
+
+var CONSTANTS = _interopRequireWildcard(_constants);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function clone() {
+  var _Object;
+
+  return (_Object = Object).assign.apply(_Object, [{}].concat(Array.prototype.slice.call(arguments)));
+}
+
 function buildUrl(state) {
   var url = '';
   if (state.title.length && state.userId.length) {
-    url = 'http://api.soundcasts.net/soundcast.xml';
+    url = CONSTANTS.API_URL;
     url += '?title=' + encodeURIComponent(state.title);
     url += '&userId=' + encodeURIComponent(state.userId);
     url += '&regexString=' + encodeURIComponent(state.regexString);
@@ -20448,24 +20673,7 @@ function buildUrl(state) {
   return url;
 }
 
-},{"../actions/values":177,"../util":183}],183:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.clone = clone;
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function clone() {
-  var _Object;
-
-  var args = Array.from(arguments);
-  return (_Object = Object).assign.apply(_Object, [{}].concat(_toConsumableArray(args)));
-}
-
-},{}]},{},[180])
+},{"./constants":183}]},{},[185])
 
 
 //# sourceMappingURL=app.js.map
