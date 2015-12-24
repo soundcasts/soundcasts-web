@@ -20371,7 +20371,7 @@ Input.propTypes = {
 };
 exports.default = Input;
 
-},{"../util":188,"react":167}],182:[function(require,module,exports){
+},{"../util":189,"react":167}],182:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -20416,12 +20416,90 @@ exports.default = InputGroup;
 },{"react":167}],183:[function(require,module,exports){
 'use strict';
 
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TitleInputGroup = exports.BaseInputGroup = undefined;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _InputGroup = require('../components/InputGroup');
+
+var _InputGroup2 = _interopRequireDefault(_InputGroup);
+
+var _Input = require('../components/Input');
+
+var _Input2 = _interopRequireDefault(_Input);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BaseInputGroup = exports.BaseInputGroup = (function (_React$Component) {
+  _inherits(BaseInputGroup, _React$Component);
+
+  function BaseInputGroup() {
+    _classCallCheck(this, BaseInputGroup);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(BaseInputGroup).apply(this, arguments));
+  }
+
+  return BaseInputGroup;
+})(_react2.default.Component);
+
+BaseInputGroup.propTypes = {
+  values: _react2.default.PropTypes.object.isRequired,
+  actions: _react2.default.PropTypes.object.isRequired
+};
+
+var TitleInputGroup = exports.TitleInputGroup = (function (_BaseInputGroup) {
+  _inherits(TitleInputGroup, _BaseInputGroup);
+
+  function TitleInputGroup() {
+    _classCallCheck(this, TitleInputGroup);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(TitleInputGroup).apply(this, arguments));
+  }
+
+  _createClass(TitleInputGroup, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props;
+      var values = _props.values;
+      var actions = _props.actions;
+
+      var inputProps = {
+        value: values.title,
+        onChange: actions.editField.bind(null, 'title'),
+        type: 'text',
+        placeholder: 'Soundcast Title'
+      };
+      var description = 'The title that will display in your podcast player.';
+
+      return (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, inputProps), (0, _react.createElement)('span', null, description));
+    }
+  }]);
+
+  return TitleInputGroup;
+})(BaseInputGroup);
+
+},{"../components/Input":181,"../components/InputGroup":182,"react":167}],184:[function(require,module,exports){
+'use strict';
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var API_URL = exports.API_URL = 'http://api.soundcasts.net/soundcast.xml';
 
-},{}],184:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -20449,6 +20527,10 @@ var _Header2 = _interopRequireDefault(_Header);
 var _InputGroup = require('../components/InputGroup');
 
 var _InputGroup2 = _interopRequireDefault(_InputGroup);
+
+var _InputGroups = require('../components/InputGroups');
+
+var InputGroups = _interopRequireWildcard(_InputGroups);
 
 var _Input = require('../components/Input');
 
@@ -20484,13 +20566,7 @@ var App = (function (_React$Component) {
       var values = _props.values;
       var actions = _props.actions;
 
-      var titleInputProps = {
-        value: values.title,
-        onChange: actions.editField.bind(null, 'title'),
-        type: 'text',
-        placeholder: 'Soundcast Title'
-      };
-      var titleInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, titleInputProps), (0, _react.createElement)('span', null, 'The title that will display in your podcast player.'));
+      var inputGroupProps = { values: values, actions: actions };
 
       var userIdInputProps = {
         value: values.userId,
@@ -20524,7 +20600,7 @@ var App = (function (_React$Component) {
       var urlInputGroupDescriptionOpacity = values.url ? 1 : 0;
       var urlInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, urlInputProps), (0, _react.createElement)('span', { style: { opacity: urlInputGroupDescriptionOpacity } }, urlInputGroupDescription));
 
-      return (0, _react.createElement)('div', null, (0, _react.createElement)(_Header2.default), titleInputGroup, userIdInputGroup, regexStringInputGroup, urlInputGroup, (0, _react.createElement)(_Footer2.default));
+      return (0, _react.createElement)('div', null, (0, _react.createElement)(_Header2.default), (0, _react.createElement)(InputGroups.TitleInputGroup, inputGroupProps), userIdInputGroup, regexStringInputGroup, urlInputGroup, (0, _react.createElement)(_Footer2.default));
     }
   }]);
 
@@ -20550,7 +20626,7 @@ function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions/values":178,"../components/Footer":179,"../components/Header":180,"../components/Input":181,"../components/InputGroup":182,"react":167,"react-redux":6,"redux":169}],185:[function(require,module,exports){
+},{"../actions/values":178,"../components/Footer":179,"../components/Header":180,"../components/Input":181,"../components/InputGroup":182,"../components/InputGroups":183,"react":167,"react-redux":6,"redux":169}],186:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -20577,7 +20653,7 @@ var store = (0, _redux.createStore)(_reducers2.default);
 
 (0, _reactDom.render)((0, _react.createElement)(_reactRedux.Provider, { store: store }, (0, _react.createElement)(_App2.default)), document.getElementById('root'));
 
-},{"./containers/App":184,"./reducers":186,"react":167,"react-dom":3,"react-redux":6,"redux":169}],186:[function(require,module,exports){
+},{"./containers/App":185,"./reducers":187,"react":167,"react-dom":3,"react-redux":6,"redux":169}],187:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20598,7 +20674,7 @@ var rootReducer = (0, _redux.combineReducers)({
 
 exports.default = rootReducer;
 
-},{"./values":187,"redux":169}],187:[function(require,module,exports){
+},{"./values":188,"redux":169}],188:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20641,7 +20717,7 @@ function values() {
   }
 }
 
-},{"../actions/constants":177,"../util":188}],188:[function(require,module,exports){
+},{"../actions/constants":177,"../util":189}],189:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20673,7 +20749,7 @@ function buildUrl(state) {
   return url;
 }
 
-},{"./constants":183}]},{},[185])
+},{"./constants":184}]},{},[186])
 
 
 //# sourceMappingURL=app.js.map

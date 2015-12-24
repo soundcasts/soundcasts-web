@@ -7,6 +7,7 @@ import * as ValuesActions from '../actions/values';
 
 import Header from '../components/Header';
 import InputGroup from '../components/InputGroup';
+import * as InputGroups from '../components/InputGroups';
 import Input from '../components/Input';
 import Footer from '../components/Footer';
 
@@ -20,18 +21,7 @@ class App extends React.Component {
 
   render() {
     const { values, actions } = this.props;
-
-
-    let titleInputProps = {
-      value: values.title,
-      onChange: actions.editField.bind(null, 'title'),
-      type: 'text',
-      placeholder: 'Soundcast Title'
-    };
-    let titleInputGroup = r(InputGroup, null,
-      r(Input, titleInputProps),
-      r('span', null, 'The title that will display in your podcast player.')
-    );
+    const inputGroupProps = { values, actions };
 
 
     let userIdInputProps = {
@@ -84,7 +74,7 @@ class App extends React.Component {
     return (
       r('div', null,
         r(Header),
-        titleInputGroup,
+        r(InputGroups.TitleInputGroup, inputGroupProps),
         userIdInputGroup,
         regexStringInputGroup,
         urlInputGroup,
