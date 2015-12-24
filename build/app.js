@@ -20392,26 +20392,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var InputGroup = (function (_React$Component) {
-  _inherits(InputGroup, _React$Component);
+var InputGroupWrapper = (function (_React$Component) {
+  _inherits(InputGroupWrapper, _React$Component);
 
-  function InputGroup() {
-    _classCallCheck(this, InputGroup);
+  function InputGroupWrapper() {
+    _classCallCheck(this, InputGroupWrapper);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputGroup).apply(this, arguments));
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputGroupWrapper).apply(this, arguments));
   }
 
-  _createClass(InputGroup, [{
+  _createClass(InputGroupWrapper, [{
     key: 'render',
     value: function render() {
       return (0, _react.createElement)('div', { className: 'input-group' }, this.props.children);
     }
   }]);
 
-  return InputGroup;
+  return InputGroupWrapper;
 })(_react2.default.Component);
 
-exports.default = InputGroup;
+exports.default = InputGroupWrapper;
 
 },{"react":167}],183:[function(require,module,exports){
 'use strict';
@@ -20421,15 +20421,15 @@ var _createClass = (function () { function defineProperties(target, props) { for
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TitleInputGroup = exports.BaseInputGroup = undefined;
+exports.UrlInputGroup = exports.RegexStringInputGroup = exports.UserIdInputGroup = exports.TitleInputGroup = undefined;
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _InputGroup = require('../components/InputGroup');
+var _InputGroupWrapper = require('../components/InputGroupWrapper');
 
-var _InputGroup2 = _interopRequireDefault(_InputGroup);
+var _InputGroupWrapper2 = _interopRequireDefault(_InputGroupWrapper);
 
 var _Input = require('../components/Input');
 
@@ -20443,7 +20443,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var BaseInputGroup = exports.BaseInputGroup = (function (_React$Component) {
+var BaseInputGroup = (function (_React$Component) {
   _inherits(BaseInputGroup, _React$Component);
 
   function BaseInputGroup() {
@@ -20484,14 +20484,112 @@ var TitleInputGroup = exports.TitleInputGroup = (function (_BaseInputGroup) {
       };
       var description = 'The title that will display in your podcast player.';
 
-      return (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, inputProps), (0, _react.createElement)('span', null, description));
+      return (0, _react.createElement)(_InputGroupWrapper2.default, null, (0, _react.createElement)(_Input2.default, inputProps), (0, _react.createElement)('span', null, description));
     }
   }]);
 
   return TitleInputGroup;
 })(BaseInputGroup);
 
-},{"../components/Input":181,"../components/InputGroup":182,"react":167}],184:[function(require,module,exports){
+var UserIdInputGroup = exports.UserIdInputGroup = (function (_BaseInputGroup2) {
+  _inherits(UserIdInputGroup, _BaseInputGroup2);
+
+  function UserIdInputGroup() {
+    _classCallCheck(this, UserIdInputGroup);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(UserIdInputGroup).apply(this, arguments));
+  }
+
+  _createClass(UserIdInputGroup, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props;
+      var values = _props2.values;
+      var actions = _props2.actions;
+
+      var inputProps = {
+        value: values.userId,
+        onChange: actions.editField.bind(null, 'userId'),
+        type: 'text',
+        placeholder: 'SoundCloud user_id',
+        autoCorrect: 'off',
+        autoCapitalize: 'none'
+      };
+
+      return (0, _react.createElement)(_InputGroupWrapper2.default, null, (0, _react.createElement)(_Input2.default, inputProps), (0, _react.createElement)('span', null, 'https://soundcloud.com/'), (0, _react.createElement)('span', { className: 'red' }, values.userId || 'user_id'));
+    }
+  }]);
+
+  return UserIdInputGroup;
+})(BaseInputGroup);
+
+var RegexStringInputGroup = exports.RegexStringInputGroup = (function (_BaseInputGroup3) {
+  _inherits(RegexStringInputGroup, _BaseInputGroup3);
+
+  function RegexStringInputGroup() {
+    _classCallCheck(this, RegexStringInputGroup);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(RegexStringInputGroup).apply(this, arguments));
+  }
+
+  _createClass(RegexStringInputGroup, [{
+    key: 'render',
+    value: function render() {
+      var _props3 = this.props;
+      var values = _props3.values;
+      var actions = _props3.actions;
+
+      var inputProps = {
+        value: values.regexString,
+        onChange: actions.editField.bind(null, 'regexString'),
+        type: 'text',
+        placeholder: 'SoundCloud Regex Filter (Optional)',
+        autoCorrect: 'off',
+        autoCapitalize: 'none'
+      };
+
+      return (0, _react.createElement)(_InputGroupWrapper2.default, null, (0, _react.createElement)(_Input2.default, inputProps), (0, _react.createElement)('span', null, 'JavaScript case-insensitive regex filter applied against '), (0, _react.createElement)('span', { className: 'red' }, values.userId || 'user_id'), (0, _react.createElement)('span', null, '\'s track titles.'));
+    }
+  }]);
+
+  return RegexStringInputGroup;
+})(BaseInputGroup);
+
+var UrlInputGroup = exports.UrlInputGroup = (function (_BaseInputGroup4) {
+  _inherits(UrlInputGroup, _BaseInputGroup4);
+
+  function UrlInputGroup() {
+    _classCallCheck(this, UrlInputGroup);
+
+    return _possibleConstructorReturn(this, Object.getPrototypeOf(UrlInputGroup).apply(this, arguments));
+  }
+
+  _createClass(UrlInputGroup, [{
+    key: 'render',
+    value: function render() {
+      var _props4 = this.props;
+      var values = _props4.values;
+      var actions = _props4.actions;
+
+      var inputProps = {
+        value: values.url,
+        onChange: actions.editField.bind(null, 'url'),
+        id: 'url',
+        type: 'text',
+        placeholder: 'Soundcast URL',
+        required: 'required'
+      };
+      var description = 'Copy and paste this link into your podcast player.';
+      var opacity = values.url ? 1 : 0;
+
+      return (0, _react.createElement)(_InputGroupWrapper2.default, null, (0, _react.createElement)(_Input2.default, inputProps), (0, _react.createElement)('span', { style: { opacity: opacity } }, description));
+    }
+  }]);
+
+  return UrlInputGroup;
+})(BaseInputGroup);
+
+},{"../components/Input":181,"../components/InputGroupWrapper":182,"react":167}],184:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20524,9 +20622,9 @@ var _Header = require('../components/Header');
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _InputGroup = require('../components/InputGroup');
+var _InputGroupWrapper = require('../components/InputGroupWrapper');
 
-var _InputGroup2 = _interopRequireDefault(_InputGroup);
+var _InputGroupWrapper2 = _interopRequireDefault(_InputGroupWrapper);
 
 var _InputGroups = require('../components/InputGroups');
 
@@ -20562,45 +20660,12 @@ var App = (function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      var _props = this.props;
-      var values = _props.values;
-      var actions = _props.actions;
-
-      var inputGroupProps = { values: values, actions: actions };
-
-      var userIdInputProps = {
-        value: values.userId,
-        onChange: actions.editField.bind(null, 'userId'),
-        type: 'text',
-        placeholder: 'SoundCloud user_id',
-        autoCorrect: 'off',
-        autoCapitalize: 'none'
+      var inputGroupProps = {
+        values: this.props.values,
+        actions: this.props.actions
       };
-      var userIdInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, userIdInputProps), (0, _react.createElement)('span', null, 'https://soundcloud.com/'), (0, _react.createElement)('span', { className: 'red' }, values.userId || 'user_id'));
 
-      var regexStringInputProps = {
-        value: values.regexString,
-        onChange: actions.editField.bind(null, 'regexString'),
-        type: 'text',
-        placeholder: 'SoundCloud Regex Filter (Optional)',
-        autoCorrect: 'off',
-        autoCapitalize: 'none'
-      };
-      var regexStringInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, regexStringInputProps), (0, _react.createElement)('span', null, 'JavaScript case-insensitive regex filter applied against '), (0, _react.createElement)('span', { className: 'red' }, values.userId || 'user_id'), (0, _react.createElement)('span', null, '\'s track titles.'));
-
-      var urlInputProps = {
-        value: values.url,
-        onChange: actions.editField.bind(null, 'url'),
-        id: 'url',
-        type: 'text',
-        placeholder: 'Soundcast URL',
-        required: 'required'
-      };
-      var urlInputGroupDescription = 'Copy and paste this link into your podcast player.';
-      var urlInputGroupDescriptionOpacity = values.url ? 1 : 0;
-      var urlInputGroup = (0, _react.createElement)(_InputGroup2.default, null, (0, _react.createElement)(_Input2.default, urlInputProps), (0, _react.createElement)('span', { style: { opacity: urlInputGroupDescriptionOpacity } }, urlInputGroupDescription));
-
-      return (0, _react.createElement)('div', null, (0, _react.createElement)(_Header2.default), (0, _react.createElement)(InputGroups.TitleInputGroup, inputGroupProps), userIdInputGroup, regexStringInputGroup, urlInputGroup, (0, _react.createElement)(_Footer2.default));
+      return (0, _react.createElement)('div', null, (0, _react.createElement)(_Header2.default), (0, _react.createElement)(InputGroups.TitleInputGroup, inputGroupProps), (0, _react.createElement)(InputGroups.UserIdInputGroup, inputGroupProps), (0, _react.createElement)(InputGroups.RegexStringInputGroup, inputGroupProps), (0, _react.createElement)(InputGroups.UrlInputGroup, inputGroupProps), (0, _react.createElement)(_Footer2.default));
     }
   }]);
 
@@ -20626,7 +20691,7 @@ function mapDispatchToProps(dispatch) {
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(App);
 
-},{"../actions/values":178,"../components/Footer":179,"../components/Header":180,"../components/Input":181,"../components/InputGroup":182,"../components/InputGroups":183,"react":167,"react-redux":6,"redux":169}],186:[function(require,module,exports){
+},{"../actions/values":178,"../components/Footer":179,"../components/Header":180,"../components/Input":181,"../components/InputGroupWrapper":182,"../components/InputGroups":183,"react":167,"react-redux":6,"redux":169}],186:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');

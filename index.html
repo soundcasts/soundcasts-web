@@ -1,4 +1,5 @@
-<html>
+<html lang="en">
+
   <head>
     <meta charset="utf-8">
     <title>Soundcasts</title>
@@ -7,115 +8,19 @@
     <link rel="stylesheet" href="static/style.css">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="icon" href="static/favicon.ico"/>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-68674716-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </head>
-
 
   <body>
     <div id="root" class="container"></div>
-
-    <div class="container" style="display: none">
-      <div class="header">
-        <h1 class="title">Soundcasts</h1>
-        <div>
-          <span class="subtitle">Turn SoundCloud profiles into podcasts.</span>
-        </div>
-        <div>
-          <span id="exampleButton" class="button">Example</span>
-          <span id="resetButton" class="button">Reset</span>
-        </div>
-      </div>
-      <div class="input">
-        <input type="text" id="title" placeholder="Soundcast Title">
-        <span id="titleDescription">The title that will display in your podcast player.</span>
-      </div>
-      <div class="input">
-        <input type="text" autocorrect="off" autocapitalize="none" id="userId" placeholder="SoundCloud user_id">
-        <span id="userIdDescription">https://soundcloud.com/<strong>user_id</strong></span>
-      </div>
-      <div class="input">
-        <input type="text" autocorrect="off" autocapitalize="none" id="regexString" placeholder="SoundCloud Regex Filter (Optional)">
-        <span id="regexStringDescription">Case-insensitive regex filter applied against <strong id="regexStringUserId">user_id</strong>'s track titles.</span>
-      </div>
-      <div class="input">
-        <input type="text" id="url" placeholder="Soundcast URL" required="required">
-        <span id="urlDescription" style="opacity: 0;">Copy and paste this link into your podcast player.</span>
-      </div>
-      <div class="footer">
-        <p>
-          Made with ୧༼ಠ益ಠ༽୨ by <a href="https://github.com/L33T-KR3W" target="_blank">L33T KR3W</a>
-          &nbsp;&middot;&nbsp;
-          <a href="https://github.com/L33T-KR3W/soundcasts-server" target="_blank">Source code</a>
-        </p>
-      </div>
-    </div>
+    <script src="/build/app.js"></script>
   </body>
 
-
-  <script type="text">
-    var keyEventName = 'keyup';
-    var clickEventName = 'click';
-    id('title').addEventListener(keyEventName, inputsChanged);
-    id('userId').addEventListener(keyEventName, inputsChanged);
-    id('userId').addEventListener(keyEventName, detectSoundcloudUrlPaste);
-    id('regexString').addEventListener(keyEventName, inputsChanged);
-    id('exampleButton').addEventListener(clickEventName, example.bind(null, false));
-    id('resetButton').addEventListener(clickEventName, example.bind(null, true));
-
-    function inputsChanged() {
-      var url = '';
-      if (value('title').length && value('userId').length) {
-        url = 'http://api.soundcasts.net/soundcast.xml';
-        url += '?title=' + encodeURIComponent(value('title'));
-        url += '&userId=' + encodeURIComponent(value('userId'));
-        url += '&regexString=' + encodeURIComponent(value('regexString'));
-      }
-      value('url', url);
-      id('regexStringUserId').innerHTML = value('userId') || 'user_id';
-      id('urlDescription').style.opacity = url ? 1 : 0;
-    }
-
-    function example(reset) {
-      id('title').value = reset ? '' : 'Hannah Wants: Mixtapes';
-      id('userId').value = reset ? '' : 'hannah_wants';
-      id('regexString').value = reset ? '' : 'mixtape';
-
-      id('titleDescription').style.opacity = reset ? null : 1;
-      id('userIdDescription').style.opacity = reset ? null : 1;
-      id('regexStringDescription').style.opacity = reset ? null : 1;
-
-      inputsChanged();
-    }
-
-    function detectSoundcloudUrlPaste(e) {
-      var userId = value('userId');
-      var match = /soundcloud\.com\/([^\/.]+)/.exec(userId);
-      if (match) {
-        e.stopPropagation();
-        value('userId',  match[1]);
-        inputsChanged();
-      }
-    }
-
-    function id(id) {
-      return document.getElementById(id);
-    }
-
-    function value(elementId, value) {
-      if ((value && value.length) || value === '') return id(elementId).value = value;
-      return id(elementId).value;
-    }
-  </script>
-
-
-  <script src="/build/app.js"></script>
-
-
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-68674716-1', 'auto');
-    ga('send', 'pageview');
-  </script>
 </html>
