@@ -1,5 +1,5 @@
 import * as ACTIONS from '../actions/constants';
-import { clone, buildUrl } from '../util';
+import { clone, buildSoundcastUrl } from '../util';
 
 
 const initialState = {
@@ -17,7 +17,7 @@ export default function values(state = initialState, action) {
 
     case ACTIONS.EDIT_FIELD:
       state = clone(state, { [action.field]: action.value });
-      let url = buildUrl(state.title, state.userId, state.regexString);
+      let url = buildSoundcastUrl(state.title, state.userId, state.regexString);
       return clone(state, { url });
 
     default:
