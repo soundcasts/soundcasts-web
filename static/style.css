@@ -26,6 +26,7 @@ body {
 
 
 .header {
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 
@@ -131,6 +132,7 @@ body {
 
 
 .footer {
+  margin-bottom: 50px;
   padding-top: 25px;
 }
 

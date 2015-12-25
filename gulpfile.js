@@ -11,7 +11,7 @@ function compile(watch) {
   var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel));
 
   function rebundle() {
-    process.stdout.write('bundling...');
+    log('bundling...');
 
     bundler
       .bundle()
@@ -21,7 +21,11 @@ function compile(watch) {
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest('./build'))
-      .on('end', function() { process.stdout.write('\x07done\n'); });
+      .on('end', function() { log('\x07done\n'); });
+  }
+
+  function log(out) {
+    process.stdout.write(out);
   }
 
   if (watch) {

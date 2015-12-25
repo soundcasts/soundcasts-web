@@ -17,7 +17,7 @@ export default function values(state = initialState, action) {
 
     case ACTIONS.EDIT_FIELD:
       state = clone(state, { [action.field]: action.value });
-      let url = buildUrl(state);
+      let url = buildUrl(state.title, state.userId, state.regexString);
       return clone(state, { url });
 
     default:

@@ -20774,7 +20774,7 @@ function values() {
 
     case ACTIONS.EDIT_FIELD:
       state = (0, _util.clone)(state, _defineProperty({}, action.field, action.value));
-      var url = (0, _util.buildUrl)(state);
+      var url = (0, _util.buildUrl)(state.title, state.userId, state.regexString);
       return (0, _util.clone)(state, { url: url });
 
     default:
@@ -20803,13 +20803,13 @@ function clone() {
   return (_Object = Object).assign.apply(_Object, [{}].concat(Array.prototype.slice.call(arguments)));
 }
 
-function buildUrl(state) {
+function buildUrl(title, userId, regexString) {
   var url = '';
-  if (state.title.length && state.userId.length) {
+  if (title.length && userId.length) {
     url = CONSTANTS.API_URL;
-    url += '?title=' + encodeURIComponent(state.title);
-    url += '&userId=' + encodeURIComponent(state.userId);
-    url += '&regexString=' + encodeURIComponent(state.regexString);
+    url += '?title=' + encodeURIComponent(title);
+    url += '&userId=' + encodeURIComponent(userId);
+    url += regexString ? '&regexString=' + encodeURIComponent(regexString) : '';
   }
   return url;
 }

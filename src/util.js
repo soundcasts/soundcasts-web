@@ -6,13 +6,13 @@ export function clone() {
 }
 
 
-export function buildUrl(state) {
+export function buildUrl(title, userId, regexString) {
   var url = '';
-  if (state.title.length && state.userId.length) {
+  if (title.length && userId.length) {
     url = CONSTANTS.API_URL;
-    url += '?title=' + encodeURIComponent(state.title);
-    url += '&userId=' + encodeURIComponent(state.userId);
-    url += '&regexString=' + encodeURIComponent(state.regexString);
+    url += '?title=' + encodeURIComponent(title);
+    url += '&userId=' + encodeURIComponent(userId);
+    url += regexString ? '&regexString=' + encodeURIComponent(regexString) : '';
   }
   return url;
 }
