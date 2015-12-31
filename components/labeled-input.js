@@ -15,16 +15,16 @@ function LabeledInput(sources) {
   const value$ = initialValue$.concat(newValue$);
 
   const vtree$ = combine((props, value) =>
-      div('.input-group', [
-        input('.input', {
-          type: 'text',
-          autoCorrect: 'off',
-          autoCapitalize: 'none',
-          placeholder: props.placeholder,
-          value
-        }),
-        span('.label', props.label + ' ' + value)
-      ]), sources.props$, value$
+    div('.input-group', [
+      input('.input', {
+        type: 'text',
+        autoCorrect: 'off',
+        autoCapitalize: 'none',
+        placeholder: props.placeholder,
+        value
+      }),
+      span('.label', props.label + ' ' + value)
+    ]), sources.props$, value$
   );
 
   const sinks = {
