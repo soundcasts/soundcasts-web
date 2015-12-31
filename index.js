@@ -4,6 +4,8 @@ const Motorcycle = require('@motorcycle/core');
 const isolate = require('@cycle/isolate');
 const {div, h2, p, makeDOMDriver} = require('@motorcycle/dom');
 
+const header = require('./header');
+const footer = require('./footer');
 const LabeledInput = require('./components/labeled-input');
 
 function main(sources) {
@@ -33,16 +35,14 @@ function main(sources) {
   const sinks = {
     DOM: url$.combine((url, userVTree, titleVTree, regexVTree) =>
         div([
-          div('.header', [
-            p('.title', 'Soundcasts'),
-            p('.subtitle', 'Turn SoundCloud profiles into podcasts.')
-          ]),
+          header,
           div([
             userVTree,
             titleVTree,
             regexVTree,
             h2('URL is ' + url)
-          ])
+          ]),
+          footer
         ]), titleInput.DOM, userInput.DOM, regexInput.DOM
       )
   };
