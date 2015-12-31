@@ -1,12 +1,11 @@
-const {Observable} = require('rx');
-const {div, span, input} = require('@cycle/dom');
+const {combine} = require('most');
+const {div, span, input} = require('@motorcycle/dom');
 
 module.exports = LabeledInput;
 
 function LabeledInput(sources) {
   const initialValue$ = sources.props$
-    .map(props => props.initial)
-    .first();
+    .map(props => props.initial);
 
   const newValue$ = sources.DOM
     .select('.input')
@@ -15,8 +14,7 @@ function LabeledInput(sources) {
 
   const value$ = initialValue$.concat(newValue$);
 
-  const vtree$ = Observable.combineLatest(sources.props$, value$,
-    (props, value) =>
+  const vtree$ = combine((props, value) =>
       div('.input-group', [
         input('.input', {
           type: 'text',
@@ -28,7 +26,7 @@ function LabeledInput(sources) {
         span('.label',
           props.label + ' ' + value
         )
-      ])
+      ]), sources.props$, value$
   );
 
   const sinks = {

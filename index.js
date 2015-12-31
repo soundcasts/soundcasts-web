@@ -1,19 +1,19 @@
-const {Observable} = require('rx');
+const {just, combine} = require('most');
 const querystring = require('querystring');
-const Cycle = require('@cycle/core');
+const Motorcycle = require('@motorcycle/core');
 const isolate = require('@cycle/isolate');
-const {div, h2, p, makeDOMDriver} = require('@cycle/dom');
+const {div, h2, p, makeDOMDriver} = require('@motorcycle/dom');
 
 const LabeledInput = require('./components/labeled-input');
 
 function main(sources) {
-  const titleProps$ = Observable.of({
+  const titleProps$ = just({
     label: 'Title', placeholder: 'Soundcast Title', initial: ''
   });
-  const userProps$ = Observable.of({
+  const userProps$ = just({
     label: 'User ID', placeholder: 'SoundCloud user_id', initial: ''
   });
-  const regexProps$ = Observable.of({
+  const regexProps$ = just({
     label: 'Regex', placeholder: 'SoundCloud Regex Filter (Optional)', initial: ''
   });
 
@@ -34,15 +34,13 @@ function main(sources) {
   const regexVTree$ = regexInput.DOM;
   const regexValue$ = regexInput.value$;
 
-  const url$ = Observable.combineLatest(titleValue$, userValue$, regexValue$,
-    (title, user, regex) => {
+  const url$ = combine((title, user, regex) => {
       return toUrl(title, user, regex);
-    }
+    }, titleValue$, userValue$, regexValue$
   );
 
   const sinks = {
-    DOM: url$.combineLatest(titleVTree$, userVTree$, regexVTree$,
-      (url, userVTree, titleVTree, regexVTree) =>
+    DOM: url$.combine((url, userVTree, titleVTree, regexVTree) =>
         div([
           div('.header', [
             p('.title', 'Soundcasts'),
@@ -54,7 +52,7 @@ function main(sources) {
             regexVTree,
             h2('URL is ' + url)
           ])
-        ])
+        ]), titleVTree$, userVTree$, regexVTree$
       )
   };
   return sinks;
@@ -64,7 +62,7 @@ const sources = {
   DOM: makeDOMDriver('#root')
 };
 
-Cycle.run(main, sources);
+Motorcycle.run(main, sources);
 
 
 /*

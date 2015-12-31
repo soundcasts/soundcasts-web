@@ -18,14 +18,14 @@
   },
   "homepage": "https://github.com/L33T-KR3W/soundcasts-web",
   "devDependencies": {
-    "@cycle/core": "^6.0.0",
-    "@cycle/dom": "^8.0.0",
     "@cycle/isolate": "^1.1.1",
+    "@motorcycle/core": "^1.0.0",
+    "@motorcycle/dom": "^1.0.3",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "budo": "^7.1.0",
-    "rx": "^4.0.7"
+    "most": "^0.16.0"
   }
 }
