@@ -23,9 +23,7 @@ function LabeledInput(sources) {
           placeholder: props.placeholder,
           value
         }),
-        span('.label',
-          props.label + ' ' + value
-        )
+        span('.label', props.label + ' ' + value)
       ]), sources.props$, value$
   );
 

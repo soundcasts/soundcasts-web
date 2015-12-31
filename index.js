@@ -25,18 +25,9 @@ function main(sources) {
   const userInput = isolate(LabeledInput)(userSources);
   const regexInput = isolate(LabeledInput)(regexSources);
 
-  const titleVTree$ = titleInput.DOM;
-  const titleValue$ = titleInput.value$;
-
-  const userVTree$ = userInput.DOM;
-  const userValue$ = userInput.value$;
-
-  const regexVTree$ = regexInput.DOM;
-  const regexValue$ = regexInput.value$;
-
   const url$ = combine((title, user, regex) => {
       return toUrl(title, user, regex);
-    }, titleValue$, userValue$, regexValue$
+    }, titleInput.value$, userInput.value$, regexInput.value$
   );
 
   const sinks = {
@@ -52,7 +43,7 @@ function main(sources) {
             regexVTree,
             h2('URL is ' + url)
           ])
-        ]), titleVTree$, userVTree$, regexVTree$
+        ]), titleInput.DOM, userInput.DOM, regexInput.DOM
       )
   };
   return sinks;
@@ -64,23 +55,18 @@ const sources = {
 
 Motorcycle.run(main, sources);
 
-
 /*
 URL Helpers
  */
 
-var BASE_URL = 'http://api.soundcasts.net/soundcast.xml?';
+const BASE_URL = 'http://api.soundcasts.net/soundcast.xml?';
 
 function toUrl(title, user, regex) {
   return user && title ? BASE_URL + query(user, title, regex) : '';
 }
 
 function query(title, user, regex) {
-  var params = {
-    'user_id': user, title
-  };
-  if (regex) {
-    params['regex'] = regex;
-  }
+  const baseParams = {'user_id': user, title};
+  const params = regex ? {...baseParams, regex} : baseParams;
   return querystring.stringify(params);
 }

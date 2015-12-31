@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "budo index.js:bundle.js --live -- -t babelify",
-    "build": "browserify index.js -t babelify > bundle.js"
+    "build": "browserify index.js -t babelify | uglifyjs -cm > bundle.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
     "budo": "^7.1.0",
-    "most": "^0.16.0"
+    "most": "^0.16.0",
+    "uglify-js": "^2.6.1"
   }
 }
