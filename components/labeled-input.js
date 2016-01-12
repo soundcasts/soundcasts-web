@@ -1,5 +1,5 @@
 const {combine} = require('most');
-const {div, span, input} = require('@motorcycle/dom');
+const {div, label, input} = require('@motorcycle/dom');
 
 module.exports = LabeledInput;
 
@@ -20,10 +20,10 @@ function LabeledInput(sources) {
         type: 'text',
         autoCorrect: 'off',
         autoCapitalize: 'none',
-        placeholder: props.placeholder,
+        attrs: {placeholder: props.placeholder},
         value
       }),
-      span('.label', props.label + ' ' + value)
+      label('.label', props.label)
     ]), sources.props$, value$
   );
 

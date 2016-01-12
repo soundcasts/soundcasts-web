@@ -1,8 +1,8 @@
-const {div, p} = require('@motorcycle/dom');
+const {div, p, h1, h2} = require('@motorcycle/dom');
 
 const header = div('.header', [
-  p('.title', 'Soundcasts'),
-  p('.subtitle', 'Turn SoundCloud profiles into podcasts.')
+  h1('Soundcasts'),
+  h2('Turn SoundCloud profiles into podcasts.')
 ]);
 
 module.exports = header;

@@ -1,145 +1,119 @@
-* {
-  text-align: center;
+/** Ultra Light */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 100;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff");
 }
 
-a {
-  color: inherit;
+/** Thin */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
+}
+
+/** Regular */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+/** Medium */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 500;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff");
+}
+
+/** Semi Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 600;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff");
+}
+
+/** Bold */ 
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 700;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  background: linear-gradient(to left, #fe8c00 , #f83600); 
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin: 0 20px;
-  color: #fdfcfb;
-  background: #f8a434;
+body {
+  color: white;
+  font-family: 'San Francisco';
   text-align: center;
 }
 
-.container {
-  width: 100%;
-  max-width: 700px;
-}
-
-
-.header {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.header .title {
-  font-size: 45px;
-  font-weight: 300;
+h1 {
+  font-weight: 400;
+  font-size: 48px;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  letter-spacing: 0.2em;
 }
 
-.header .subtitle {
+h2 {
+  margin-top: 2px;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 200;
 }
 
-.header span.button {
-  display: inline-block;
-  margin: 50px 10px 0;
-  padding: 10px;
-  width: 70px;
-  border-radius: 5px 5px 5px 5px;
-
-  cursor: pointer;
-  background: #808080;
-  font-size: 14px;
-  font-weight: 300;
+form {
+  max-width: 640px;
+  margin: 24px auto 0;
 }
-
-.header span.button:hover {
-  background: #404040;
+fieldset {
+  margin: 30px 0;
+  padding: 0;
+  border: 0;
 }
-
-
-.input-group {
-  margin-bottom: 15px;
-}
-
-.input-group span {
-  margin-top: 5px;
-  opacity: 0;
-}
-
-.input-group input:focus ~ span {
-  opacity: 1;
-}
-
-.input-group span.red {
-  font-weight: 800;
-  color: #e74c3c;
-}
-
-.input-group input {
+input {
+  margin-top: 24px;
   display: block;
-  margin-bottom: 4px;
-  border: none;
-  padding: 0 10px;
   width: 100%;
-  height: 44px;
-  font-size: 15px;
-  background: #fdfcfb;
-  font-family: inherit;
-  color: #3a3a3a;
-  letter-spacing: 1px;
-  border-radius: 5px 5px 5px 5px;
-}
-
-.input-group input:focus {
-  outline: 2px solid #e74c3c;
-}
-
-
-#url {
-  background: #c50a43;
-  font-size: 15px;
-}
-
-#url + span {
-  opacity: 1;
-}
-
-#url:valid {
-  font-size: 10px;
-  color: white;
-}
-
-#url::-webkit-input-placeholder {
-  color: white;
-  font-size: 15px;
-}
-#url:-moz-placeholder {
-  color: white;
-  font-size: 15px;
-}
-#url::-moz-placeholder {
-  color: white;
-  font-size: 15px;
-}
-#url:-ms-input-placeholder {
-  color: white;
-  font-size: 15px;
-}
-
-
-.footer {
-  margin-bottom: 50px;
-  padding-top: 25px;
-}
-
-.footer p {
+  height: 3em;
+  padding: 4px 16px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  background: rgba(255,255,255,0.97);
+  color: #212121;
+  outline: 0;
+  appearance: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
   margin-bottom: 4px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.footer .separator {
-  margin: 0 8px;
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; }
+input:focus::-moz-placeholder { color:transparent; }
+input:focus:-ms-input-placeholder { color:transparent; }
+
+.url {
+  background: rgba(0,0,0,.2);
+  padding: 16px;
+  border-radius: 4px;
+  outline: none;
+  word-wrap: break-word;
+  transition: opacity 200ms ease-in-out;
 }
+
+
+
+.url.disabled {
+  opacity: .4;
+  cursor: not-allowed;
+  -webkit-user-select: none;
+}
+
