@@ -1,7 +1,7 @@
 const {just, combine} = require('most');
 const querystring = require('querystring');
 const isolate = require('@cycle/isolate');
-const {div, h2, form} = require('@motorcycle/dom');
+const {div, form} = require('@motorcycle/dom');
 
 const header = require('./header');
 const footer = require('./footer');
