@@ -1,0 +1,79 @@
+@import "normalize.css";
+
+@import "./fonts.css";
+
+body {
+  background: linear-gradient(to left, #fe8c00 , #f83600);
+  color: white;
+  font-family: 'San Francisco';
+  text-align: center;
+}
+
+a {
+  color: white;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 200;
+  margin-top: 2px;
+}
+
+form {
+  margin: 24px auto 0;
+  max-width: 640px;
+}
+
+input {
+  appearance: none;
+  background: rgba(255,255,255,0.97);
+  border-radius: 4px;
+  border: 0;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  color: #212121;
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  height: 3em;
+  line-height: 1;
+  margin-bottom: 4px;
+  margin-top: 24px;
+  outline: 0;
+  padding: 4px 16px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.url {
+  background: rgba(0,0,0,.2);
+  border-radius: 4px;
+  outline: none;
+  margin: 48px 0;
+  padding: 16px;
+  transition: opacity 200ms ease-in-out;
+  word-wrap: break-word;
+}
+
+.url.disabled {
+  cursor: not-allowed;
+  opacity: .4;
+  user-select: none;
+}
+
+footer {
+  margin-top: 20px;
+}
