@@ -4,8 +4,7 @@
   "description": "For a project description, see [soundcasts-server](https://github.com/L33T-KR3W/soundcasts-server)",
   "main": "index.js",
   "scripts": {
-    "start": "static . --cache 1 & gulp watch",
-    "serve": "static . --cache 1",
+    "start-dev": "gulp start-dev",
     "build": "gulp build"
   },
   "repository": {
@@ -24,6 +23,8 @@
     "babel-preset-stage-0": "^6.3.13",
     "babelify": "^7.2.0",
     "browserify": "^12.0.1",
+    "csjs": "^1.0.0-alpha.4",
+    "csjs-injectify": "git+https://github.com/rtsao/csjs-injectify.git",
     "gulp": "^3.9.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sourcemaps": "^1.6.0",

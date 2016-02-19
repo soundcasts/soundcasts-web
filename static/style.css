@@ -6,60 +6,6 @@ a {
   color: inherit;
 }
 
-body {
-  font-family: 'Lato', sans-serif;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin: 0 20px;
-  color: #fdfcfb;
-  background: #f8a434;
-  text-align: center;
-}
-
-.container {
-  width: 100%;
-  max-width: 700px;
-}
-
-
-.header {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.header .title {
-  font-size: 45px;
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  margin-bottom: 10px;
-}
-
-.header .subtitle {
-  font-size: 18px;
-  font-weight: 300;
-}
-
-.header span.button {
-  display: inline-block;
-  margin: 50px 10px 0;
-  padding: 10px;
-  width: 70px;
-  border-radius: 5px 5px 5px 5px;
-
-  cursor: pointer;
-  background: #808080;
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.header span.button:hover {
-  background: #404040;
-}
-
 
 .input-group {
   margin-bottom: 15px;
@@ -128,18 +74,4 @@ body {
 #url:-ms-input-placeholder {
   color: white;
   font-size: 15px;
-}
-
-
-.footer {
-  margin-bottom: 50px;
-  padding-top: 25px;
-}
-
-.footer p {
-  margin-bottom: 4px;
-}
-
-.footer .separator {
-  margin: 0 8px;
 }
