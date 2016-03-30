@@ -29,7 +29,6 @@
     "babelify": "7.2.0",
     "browserify": "13.0.0",
     "budo": "8.1.0",
-    "cpr": "1.0.0",
     "git-credential-env": "1.0.0",
     "most": "0.18.7",
     "normalize.css": "4.0.0",
