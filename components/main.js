@@ -23,7 +23,7 @@ function main(sources) {
   });
   const regexProps$ = just({
     label: 'Regex Filter (Optional)',
-    placeholder: 'Case-Insensitive Regex Filter (Optional)',
+    placeholder: 'Case-insensitive regex filter (optional)',
     initial: ''
   });
 
