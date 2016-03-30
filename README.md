@@ -4,7 +4,7 @@
 [![dev-dependencies][dev-dependencies-badge]][dev-dependencies-href]
 
 
-For a project description, see [soundcasts-server](https://github.com/L33T-KR3W/soundcasts-server)
+For a project description, see [soundcasts-server](https://github.com/L33T-KR3W/soundcasts-server).
 
 
 [build-status-badge]: https://img.shields.io/travis/L33T-KR3W/soundcasts-web.svg?style=flat-square
