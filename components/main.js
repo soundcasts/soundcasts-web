@@ -11,14 +11,14 @@ const UrlField = require('./url-field');
 module.exports = main;
 
 function main(sources) {
-  const titleProps$ = just({
-    label: 'Podcast Title',
-    placeholder: 'The title that will display in your podcast player',
-    initial: ''
-  });
   const userProps$ = just({
     label: 'SoundCloud User ID',
     placeholder: 'https://soundcloud.com/user_id or user_id',
+    initial: ''
+  });
+  const titleProps$ = just({
+    label: 'Podcast Title',
+    placeholder: 'The title that will display in your podcast player',
     initial: ''
   });
   const regexProps$ = just({
@@ -27,17 +27,17 @@ function main(sources) {
     initial: ''
   });
 
-  const titleSources = {DOM: sources.DOM, props$: titleProps$};
   const userSources = {DOM: sources.DOM, props$: userProps$};
+  const titleSources = {DOM: sources.DOM, props$: titleProps$};
   const regexSources = {DOM: sources.DOM, props$: regexProps$};
 
-  const titleInput = isolate(LabeledInput)(titleSources);
   const userInput = isolate(LabeledInput)(userSources);
+  const titleInput = isolate(LabeledInput)(titleSources);
   const regexInput = isolate(LabeledInput)(regexSources);
 
-  const url$ = combine((title, user, regex) => {
-      return toUrl(title, user, regex);
-    }, titleInput.value$, userInput.value$, regexInput.value$
+  const url$ = combine((user, title, regex) => {
+      return toUrl(user, title, regex);
+    }, userInput.value$, titleInput.value$, regexInput.value$
   );
 
   const urlFieldProps$ = just({
@@ -48,7 +48,7 @@ function main(sources) {
 
   const sinks = {
     DOM: url$.combine(
-      (url, titleVTree, userVTree, regexVTree, urlFieldVTree) =>
+      (url, userVTree, titleVTree, regexVTree, urlFieldVTree) =>
         div([
           header,
           div([
@@ -61,7 +61,7 @@ function main(sources) {
           ]),
           footer
         ]),
-      titleInput.DOM, userInput.DOM, regexInput.DOM, urlField.DOM
+      userInput.DOM, titleInput.DOM, regexInput.DOM, urlField.DOM
     ),
     selections: urlField.selections$,
   };
@@ -80,7 +80,7 @@ function toUrl(title, user, regex) {
 }
 
 function query(title, user, regex) {
-  const baseParams = {title, 'user_id': user};
+  const baseParams = {'user_id': user, title};
   const params = regex ? {...baseParams, regexString: regex} : baseParams;
   return querystring.stringify(params);
 }
