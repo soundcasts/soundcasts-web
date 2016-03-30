@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 5.9.1
+branches:
+  only:
+    - master
+env:
+  global:
+    secure: FITJGdp256X7sCIb78EHyHv8pQaJzUkPxZ2OHOl5KbByeAbGJVerh8KZP0zgO7vvkEmRgIOkaYZeqSSaELze5zW2++NanUBN910ub4sLaRFhWOVe8s5aJdbPKv8N6M+ClTViWDkeHcgIspUsrvRL5PR8Z60DilMw/9v2wU+iLKrN84VhPo49JguHUAV5miX8gwPdlp6dOrtXEZjKxG9Sj2IHXJC+pYMNRURDwJwSuRTxyDIvdqDWhVY+35v2KQGAKBCibjxALrZ/KuBnCzEo2HsHKTaN9ukT/wzHAeprY4r17NV7QylmLTE/ymPKIg6t81z4+ANLukqTJg8vaDqDPnxwEuKpyX7ouXd8WulQWlNM1JtckZ02W1G9Z1ngyC3jLm4/czOGM7ePjBoRy9iBpRPy1ppfP+3xCGJ/+RVtrSljW4rGRh1cXeDzdjSoZasABLH8DGt/D1a/m/oAZhTQiKrU6WI9lng96DmaG4w2rbL6N1RO6nK+M2r+LdtCT4zF3eC2VofSJlJrPmdrMCtRQDnldOSzsWx0jGfOxXwsx1a1v9er0fr3gHhsA1LXwPY/jjxmmhEBHg3zRu2oBNwiwS11NQ5IQ+nYjDvGkvNMXuEjhvAI7GxgB85DYNrAQ1gCP19ELBYStbin8jBUsk2qjoSqo3W2SXUP4kw28O19rEE=
+
+script:
+  - npm install -g git-credential-env
+  - git config credential.helper "env --username=GITHUB_TOKEN"
+  - git config user.name "Travis CI"
+  - npm run deploy
