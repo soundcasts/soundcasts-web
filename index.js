@@ -5,7 +5,9 @@ const selectionDriver = require('./drivers/selection-driver');
 
 const main = require('./components/main');
 
-const root = document.body.appendChild(document.createElement('div'));
+const rootElement = document.createElement('div');
+rootElement.id = 'root';
+const root = document.body.appendChild(rootElement);
 
 const sources = {
   DOM: makeDOMDriver(root),
