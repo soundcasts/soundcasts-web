@@ -9,7 +9,7 @@
     "build:css": "postcss --use postcss-import --use autoprefixer -o build/screen.css styles/index.css",
     "build:js": "browserify index.js -t babelify | uglifyjs -cm > build/bundle.js",
     "build:static": "cp -r static/* build/",
-    "watch": "npm run watch:css & npm run watch:js",
+    "watch": "npm run watch:css & npm run watch:js & wait",
     "watch:css": "npm run build:css -- --watch",
     "watch:js": "budo index.js:bundle.js --dir build --css screen.css --live -- -t babelify",
     "deploy": "npm run build && push-dir --dir build --branch gh-pages --cleanup"
