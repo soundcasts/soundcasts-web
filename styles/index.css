@@ -2,11 +2,26 @@
 
 @import "./fonts.css";
 
+
+html {
+  height: 100%;
+}
+
 body {
-  background: linear-gradient(to left, #fe8c00 , #f83600);
+  align-items: center;
+  background: #f8a434;
   color: white;
-  font-family: 'San Francisco';
+  display: flex;
+  font-family: 'San Francisco', sans-serif;
+  justify-content: center;
+  margin: 0 10px;
+  min-height: 100%;
   text-align: center;
+}
+
+#root {
+  max-width: 700px;
+  width: 100%;
 }
 
 a {
@@ -18,6 +33,7 @@ h1 {
   font-weight: 400;
   letter-spacing: 0.2em;
   margin-bottom: 0;
+  margin-left: 0.1em;
   text-transform: uppercase;
 }
 
@@ -34,10 +50,10 @@ form {
 
 input {
   appearance: none;
-  background: rgba(255,255,255,0.97);
+  background: rgba(255, 255, 255, 0.97);
   border-radius: 4px;
   border: 0;
-  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   color: #212121;
   display: block;
@@ -59,7 +75,7 @@ input:focus::placeholder {
 }
 
 .url {
-  background: rgba(0,0,0,.2);
+  background: rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   outline: none;
   margin: 48px 0;
@@ -70,7 +86,7 @@ input:focus::placeholder {
 
 .url.disabled {
   cursor: not-allowed;
-  opacity: .4;
+  opacity: 0.4;
   user-select: none;
 }
 
