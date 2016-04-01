@@ -73,13 +73,20 @@ URL Helpers
  */
 
 const BASE_URL = 'http://api.soundcasts.net/soundcast.xml?';
+const SOUNDCLOUD_URL_REGEX = /soundcloud.com\/([^\?#\/]+).*$/i;
 
-function toUrl(title, user, regex) {
-  return user && title ?
-    BASE_URL + query(user, title, regex) : '';
+function toUrl(user, title, regex) {
+  const userId = getUserId(user);
+  const url = () => BASE_URL + query(userId, title, regex);
+  return user && title ? url() : '';
 }
 
-function query(title, user, regex) {
+function getUserId(urlOrId) {
+  const result = SOUNDCLOUD_URL_REGEX.exec(urlOrId);
+  return result ? result[1] : urlOrId;
+}
+
+function query(user, title, regex) {
   const baseParams = {'userId': user, title};
   const params = regex ? {...baseParams, regexString: regex} : baseParams;
   return querystring.stringify(params);
