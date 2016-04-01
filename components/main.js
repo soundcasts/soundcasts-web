@@ -80,7 +80,7 @@ function toUrl(title, user, regex) {
 }
 
 function query(title, user, regex) {
-  const baseParams = {'user_id': user, title};
+  const baseParams = {'userId': user, title};
   const params = regex ? {...baseParams, regexString: regex} : baseParams;
   return querystring.stringify(params);
 }
