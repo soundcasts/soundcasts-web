@@ -1,7 +1,16 @@
+const csjs = require('csjs-inject');
 const {footer, a, span} = require('@motorcycle/dom');
 
+const styles = csjs`
+  
+  .footer {
+    margin: 20px 0;
+  }
+  
+`;
+
 module.exports = (
-  footer('.footer', [
+  footer(styles.footer.selector, [
     'Made with ',
     span('୧༼ಠ益ಠ༽୨'),
     ' by ',

@@ -12,18 +12,18 @@ module.exports = main;
 
 function main(sources) {
   const userProps$ = just({
-    label: 'SoundCloud User ID',
-    placeholder: 'https://soundcloud.com/user_id or user_id',
+    label: 'https://soundcloud.com/user_id or user_id',
+    placeholder: 'SoundCloud User ID',
     initial: ''
   });
   const titleProps$ = just({
-    label: 'Podcast Title',
-    placeholder: 'The title that will display in your podcast player',
+    label: 'The title that will display in your podcast player',
+    placeholder: 'Podcast Title',
     initial: ''
   });
   const regexProps$ = just({
-    label: 'Regex Filter (Optional)',
-    placeholder: 'Case-insensitive regex filter (optional)',
+    label: 'Case-insensitive regex filter (optional)',
+    placeholder: 'Regex Filter (Optional)',
     initial: ''
   });
 

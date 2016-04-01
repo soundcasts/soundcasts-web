@@ -2,5 +2,10 @@
   "presets": [
     "es2015",
     "stage-0"
+  ],
+  "plugins": [
+    ["csjs-postcss", {
+      "plugins": [["autoprefixer", {"browsers": ["last 2 versions"]}]]
+    }]
   ]
 }
