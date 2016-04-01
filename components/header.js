@@ -18,6 +18,16 @@ const styles = csjs`
     margin-top: 2px;
   }
   
+  @media (max-width: 400px) {
+    .title {
+      font-size: 30px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+    }
+  }
+  
 `;
 
 module.exports = (
