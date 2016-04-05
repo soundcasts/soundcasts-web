@@ -18,11 +18,10 @@ function LabeledInput(sources) {
   const vtree$ = combine((props, value) =>
     div([
       input(styles.input.selector, {
-        type: 'text',
-        autoCorrect: 'off',
-        autoCapitalize: 'none',
-        attrs: {placeholder: props.placeholder},
-        value
+        attrs: Object.assign(
+          { type: 'text', value },
+          props.inputAttrs || {}
+        )
       }),
       label(props.label)
     ]), sources.props$, value$
