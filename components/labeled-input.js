@@ -40,7 +40,7 @@ const styles = csjs`
 
   .input {
     appearance: none;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255, 255, 255, 1);
     border-radius: 4px;
     border: 0;
     box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
