@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build/ && mkdir -p build/",
     "build": "npm run clean && npm run build:js && npm run build:css && npm run build:static",
-    "build:css": "postcss --use postcss-import --use autoprefixer -o build/screen.css styles/index.css",
+    "build:css": "postcss --use postcss-import --use autoprefixer --use cssnano -o build/screen.css styles/index.css",
     "build:js": "browserify index.js -t babelify | uglifyjs -cm > build/bundle.js",
     "build:static": "cp -r static/* build/",
     "watch": "npm run watch:css & npm run watch:js & wait",
@@ -15,6 +15,11 @@
     "deploy": "npm run build && push-dir --dir build --branch gh-pages --cleanup"
   },
   "author": "L33T KR3W",
+  "contributors": [
+    "Matthew Medal <matt.medal@gmail.com>",
+    "Ryan Tsao <ryan.j.tsao@gmail.com>",
+    "Scott Hardy <scott.the.hardy@gmail.com>"
+  ],
   "license": "MIT",
   "repository": "https://github.com/L33T-KR3W/soundcasts-web.git",
   "homepage": "https://github.com/L33T-KR3W/soundcasts-web",
@@ -31,6 +36,7 @@
     "browserify": "12.0.1",
     "budo": "7.1.0",
     "csjs-inject": "1.0.0",
+    "cssnano": "3.5.2",
     "git-credential-env": "1.0.0",
     "most": "0.16.0",
     "normalize.css": "3.0.3",
