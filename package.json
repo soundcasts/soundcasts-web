@@ -15,6 +15,11 @@
     "deploy": "npm run build && push-dir --dir build --branch gh-pages --cleanup"
   },
   "author": "L33T KR3W",
+  "contributors": [
+    "Matthew Medal <matt.medal@gmail.com>",
+    "Ryan Tsao <ryan.j.tsao@gmail.com>",
+    "Scott Hardy <scott.the.hardy@gmail.com>"
+  ],
   "license": "MIT",
   "repository": "https://github.com/L33T-KR3W/soundcasts-web.git",
   "homepage": "https://github.com/L33T-KR3W/soundcasts-web",
