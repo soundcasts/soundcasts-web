@@ -9,10 +9,11 @@ html {
 
 body {
   align-items: center;
-  background: #f8a434;
   color: white;
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAUUlEQVQIWxXKMQ5AQBRF0fuHEZmGRKGyWQmNelZiQzpbwMh/4tTHzryqHxPt1EFsQA4SONiRN6UhUUfjuZxyO6W8gLB9XiT/W8CDEdxRFQnAB1AFHzAT/VTCAAAAAElFTkSuQmCC");
   display: flex;
-  font-family: 'San Francisco', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
   justify-content: center;
   margin: 0 10px;
   min-height: 100%;
@@ -20,7 +21,7 @@ body {
 }
 
 #root {
-  max-width: 640px;
+  max-width: 600px;
   width: 100%;
 }
 

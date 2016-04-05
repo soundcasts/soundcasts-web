@@ -5,8 +5,8 @@ const styles = csjs`
   
   .title {
     font-size: 48px;
-    font-weight: 400;
-    letter-spacing: 0.2em;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     margin-bottom: 0;
     margin-left: 0.1em;
     text-transform: uppercase;
