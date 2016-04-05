@@ -1,8 +1,5 @@
 @import "normalize.css";
 
-@import "./fonts.css";
-
-
 html {
   height: 100%;
 }
@@ -11,7 +8,7 @@ body {
   align-items: center;
   color: white;
   background-size: cover;
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAUUlEQVQIWxXKMQ5AQBRF0fuHEZmGRKGyWQmNelZiQzpbwMh/4tTHzryqHxPt1EFsQA4SONiRN6UhUUfjuZxyO6W8gLB9XiT/W8CDEdxRFQnAB1AFHzAT/VTCAAAAAElFTkSuQmCC");
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAADCAYAAABfwxXFAAAAAXNSR0IArs4c6QAAAFhJREFUCB0NyjEKgCAYQOFnOhgEjbU3dpFu0Um7RktL0BoEopjBrzm94XvqWJcyTj3dPIBtIQuUDDUmYLmTxe2O6B9SEN70UQ/MdkXy6aHRiFZoEYqx6Mo/nCIg9vkuNwYAAAAASUVORK5CYII=);
   display: flex;
   font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
   justify-content: center;
