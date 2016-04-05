@@ -9,19 +9,17 @@ const styles = csjs`
   
 `;
 
-module.exports = (
-  footer(styles.footer.selector, [
-    'Made with ',
-    span('୧༼ಠ益ಠ༽୨'),
-    ' by ',
-    a({attrs: {
-      href: 'https://github.com/L33T-KR3W',
-      target: '_blank'
-    }}, 'L33T KR3W'),
-    ' · ',
-    a({attrs: {
-      href: 'https://github.com/L33T-KR3W/soundcasts-server',
-      target: '_blank'
-    }}, 'Source code')
-  ])
-);
+module.exports = footer(styles.footer.selector, [
+  'Made with ',
+  '🍺', // beer mug
+  ' by ',
+  a({attrs: {
+    href: 'https://github.com/L33T-KR3W',
+    target: '_blank'
+  }}, 'L33T KR3W'),
+  ' · ',
+  a({attrs: {
+    href: 'https://github.com/L33T-KR3W/soundcasts-server',
+    target: '_blank'
+  }}, 'Source code')
+]);
