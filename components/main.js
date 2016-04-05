@@ -84,7 +84,7 @@ function main(sources) {
 URL Helpers
  */
 
-const BASE_URL = 'http://api.soundcasts.net/soundcast.xml?';
+const BASE_URL = 'https://api.soundcasts.net/soundcast.xml?';
 const SOUNDCLOUD_URL_REGEX = /soundcloud.com\/([^\?#\/]+).*$/i;
 
 function toUrl(user, title, regex) {
