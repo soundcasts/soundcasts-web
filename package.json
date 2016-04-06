@@ -1,8 +1,18 @@
 {
   "name": "soundcasts-web",
   "version": "1.0.0",
-  "description": "For a project description, see [soundcasts-server](https://github.com/L33T-KR3W/soundcasts-server)",
+  "description": "Turn SoundCloud profiles into podcasts.",
   "main": "index.js",
+  "author": "L33T KR3W",
+  "contributors": [
+    "Matthew Medal <matt.medal@gmail.com>",
+    "Ryan Tsao <ryan.j.tsao@gmail.com>",
+    "Scott Hardy <scott.the.hardy@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": "git@github.com:L33T-KR3W/soundcasts-web.git",
+  "homepage": "https://github.com/L33T-KR3W/soundcasts-web",
+  "bugs": "https://github.com/L33T-KR3W/soundcasts-web/issues",
   "scripts": {
     "clean": "rm -rf build/ && mkdir -p build/",
     "build": "npm run clean && npm run build:js && npm run build:css && npm run build:static",
@@ -14,16 +24,6 @@
     "watch:js": "budo index.js:bundle.js --dir build --css screen.css --live -- -t babelify",
     "deploy": "npm run build && push-dir --dir build --branch gh-pages --cleanup"
   },
-  "author": "L33T KR3W",
-  "contributors": [
-    "Matthew Medal <matt.medal@gmail.com>",
-    "Ryan Tsao <ryan.j.tsao@gmail.com>",
-    "Scott Hardy <scott.the.hardy@gmail.com>"
-  ],
-  "license": "MIT",
-  "repository": "https://github.com/L33T-KR3W/soundcasts-web.git",
-  "homepage": "https://github.com/L33T-KR3W/soundcasts-web",
-  "bugs": "https://github.com/L33T-KR3W/soundcasts-web/issues",
   "devDependencies": {
     "@cycle/isolate": "1.1.1",
     "@motorcycle/core": "1.0.0",
